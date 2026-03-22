@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_mitarbeiter">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_org"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/scanConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="@string/noSetting"
+                    android:textSize="@dimen/action_button" />
+
+                <LinearLayout
+                    android:id="@+id/user_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/user_organisation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/user_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/orgInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/org_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/organisationName"
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/orgPartner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/ansprechpartner"
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/orgId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="Organisation ID"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/orgUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="Organisation Url"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/settingConnectionOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/connectionOrgSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:enabled="false"
+                        android:text="@string/save"
+                        android:textSize="@dimen/action_button"
+                        android:visibility="gone"
+                        android:backgroundTint="@color/backgroundSuccess"
+                        app:icon="@drawable/ic_baseline_check_24" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/connectionResetOrg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="@string/delete"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone"
+                        android:backgroundTint="@color/backgroundError"
+                        app:icon="@drawable/ic_baseline_delete_24" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/settingsConnectionUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/saveUserConnection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:enabled="false"
+                        android:text="@string/save"
+                        android:textSize="@dimen/action_button"
+                        android:visibility="gone"
+                        android:backgroundTint="@color/backgroundSuccess"
+                        app:icon="@drawable/ic_baseline_check_24" />
+
+                    <LinearLayout
+                        android:id="@+id/userEmailCOnfirmation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/edituseremailCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Email Confirmation Code"
+                            android:inputType="textPersonName"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonEmailCOnfirmation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/OkText" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/resetUserConnection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:enabled="false"
+                        android:text="@string/delete"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone"
+                        android:backgroundTint="@color/backgroundError"
+                        app:icon="@drawable/ic_baseline_delete_24" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</ScrollView>

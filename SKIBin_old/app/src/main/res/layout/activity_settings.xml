@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/default_margin"
+    tools:context=".SettingsActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_org"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/orgInfo"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/org_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/organisationName"
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/orgPartner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/ansprechpartner"
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/orgId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="Organisation ID"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/orgUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="Organisation Url"
+                        android:textSize="@dimen/default_font_size"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/scanSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="Verbinde zu einer Organisation" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/connectionOrgSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:enabled="false"
+                    android:text="Speichern" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/connectionResetOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="Reset" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/userEmailCOnfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edituseremailCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Email Confirmation Code"
+                        android:inputType="textPersonName"
+                        android:visibility="visible" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonEmailCOnfirmation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/OkText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/user_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/user_organisation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+
+                    <TextView
+                        android:id="@+id/user_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textSize="@dimen/default_font_size" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/scanConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="Verbinde eine Person" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/saveUserConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:enabled="false"
+                    android:text="Speichern" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/resetUserConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:enabled="false"
+                    android:text="Reset meine Verknüpfung" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</ScrollView>

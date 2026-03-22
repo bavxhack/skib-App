@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FingerprintActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="391dp"
+                android:layout_height="92dp"
+                app:srcCompat="@drawable/logo_breit_unten" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="106dp"
+                android:layout_height="103dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/ic_baseline_fingerprint_24"
+                tools:ignore="VectorDrawableCompat"
+                tools:layout_editor_absoluteY="165dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="@string/fingerprintAuthentivcate"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/authenticationStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/authenticate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:text="@string/fingerprintAuthenticateButton"
+                app:icon="@drawable/ic_baseline_fingerprint_24" />
+
+            <EditText
+                android:id="@+id/pinNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="PIN"
+                android:inputType="numberPassword" />
+
+
+            <EditText
+                android:id="@+id/pinNewNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Neue Pin"
+                android:inputType="numberPassword"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/pinNumberVerify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Neue PIN Bestätigen"
+                android:inputType="numberPassword"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/pinAuthenticateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mit PIN authentifizieren" />
+
+            <Button
+                android:id="@+id/pinAuthenticateBtnNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Speichern"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin"
+            android:gravity="bottom|center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pinsetNewBtn"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:background="#0000"
+                android:text="PIN neu setzen"
+                android:textSize="@dimen/button_small"
+
+                />
+
+            <TextView
+                android:id="@+id/pinresetAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:background="#0000"
+                android:text="Alles zurücksetzen"
+                android:textSize="@dimen/button_small" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
