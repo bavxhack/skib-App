@@ -42,4 +42,8 @@
     <string name="resetSubtitle">Wollen Sie die App wirklich zurücksetzen?</string>
     <string name="checkinTitle">Wollen Sie das Kind wirklich einchecken?</string>
     <string name="callTitle">Jetzt anrufen?</string>
+
+    <string name="emailCheckHint">Prüfen Sie Ihre E-Mails</string>
+    <string name="errorTitle">Fehler</string>
+    <string name="emailTokenError">Sie haben einen falschen Code eingegeben. Bitte prüfen Sie den Bestätigungscode in Ihrer E-Mail.</string>
 </resources>
