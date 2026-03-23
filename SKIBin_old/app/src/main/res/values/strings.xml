@@ -50,4 +50,5 @@
     <string name="checkinMissingOrg">Die Organisation wurde nicht korrekt geladen. Bitte öffnen Sie die Organisationsansicht neu.</string>
     <string name="checkinSuccessFallback">Check-in erfolgreich verarbeitet.</string>
     <string name="checkinErrorFallback">Beim Check-in ist ein Fehler aufgetreten.</string>
+    <string name="checkinServerNotFound">Das gescannte Kind konnte nicht gefunden oder nicht verarbeitet werden.</string>
 </resources>
