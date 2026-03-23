@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="default_margin">20dp</dimen>
-    <dimen name="default_font_size">18sp</dimen>
-    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_font_size">16sp</dimen>
+    <dimen name="toolbar_elevation">6dp</dimen>
     <dimen name="toolbar_size">64dp</dimen>
-    <dimen name="action_button">25sp</dimen>
-    <dimen name="action_button_large">25sp</dimen>
-    <dimen name="button_height">170dp</dimen>
-    <dimen name="button_small">12dp</dimen>
+    <dimen name="action_button">20sp</dimen>
+    <dimen name="action_button_large">22sp</dimen>
+    <dimen name="button_height">96dp</dimen>
+    <dimen name="button_small">12sp</dimen>
+    <dimen name="card_radius">24dp</dimen>
+    <dimen name="card_radius_small">18dp</dimen>
+    <dimen name="content_spacing">12dp</dimen>
 </resources>

@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surfaceBackground"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/toolbar_elevation"
-        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
-        app:subtitleTextColor="@color/white"
-        app:titleTextColor="@color/white" />
+        app:title="Kinderübersicht" />
+
     <LinearLayout
         android:id="@+id/childListContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabChildList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/colorPrimary" />
+            android:layout_margin="8dp"
+            android:background="@color/surfaceCard"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="false"
+            app:tabRippleColor="@color/surfaceMuted"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/grey" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ScrollView
-                android:id="@+id/childListScrollCOntainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </androidx.viewpager.widget.ViewPager>
+            android:layout_height="match_parent" />
     </LinearLayout>
-
 </LinearLayout>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0259b0</color>
-    <color name="white">#ffffff</color>
-    <color name="grey">#787878</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="backgroundSuccess">#98E687</color>
-    <color name="backgroundError">#ED8585</color>
-    <color name="phoneGreen">#53BA58</color>
-    <color name="black">#474747</color>
+    <color name="colorPrimary">#1E3A8A</color>
+    <color name="colorPrimaryDark">#142A63</color>
+    <color name="colorAccent">#14B8A6</color>
+    <color name="colorSecondary">#3B82F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#6B7280</color>
+    <color name="black">#1F2937</color>
+    <color name="surfaceBackground">#F4F7FB</color>
+    <color name="surfaceCard">#FFFFFFFF</color>
+    <color name="surfaceMuted">#E5EEF9</color>
+    <color name="strokeSubtle">#D6E2F0</color>
+    <color name="backgroundSuccess">#B8E8C3</color>
+    <color name="backgroundError">#F3B1B1</color>
+    <color name="phoneGreen">#22C55E</color>
+    <color name="buttonPrimary">#1E40AF</color>
+    <color name="buttonPrimaryPressed">#1D4ED8</color>
+    <color name="buttonDanger">#DC2626</color>
 </resources>
