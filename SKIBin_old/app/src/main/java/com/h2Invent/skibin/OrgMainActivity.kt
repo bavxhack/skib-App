@@ -45,7 +45,11 @@ class OrgMainActivity : AppCompatActivity() {
         torchSwitch = findViewById(R.id.torchSwitch)
 
         scanButton.setOnClickListener {
-            startActivity(Intent(this, ScanCheckinActivity::class.java).putExtra(ScanCheckinActivity.EXTRA_TORCH, torchSwitch.isChecked))
+            startActivity(
+                Intent(this, ScanCheckinActivity::class.java)
+                    .putExtra(ScanCheckinActivity.EXTRA_TORCH, torchSwitch.isChecked)
+                    .putExtra(ScanCheckinActivity.EXTRA_ORG_ID, orgId),
+            )
         }
         torchSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             val text = if (isChecked) getString(R.string.torchOn) else getString(R.string.torchOff)

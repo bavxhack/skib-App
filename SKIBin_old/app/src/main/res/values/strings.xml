@@ -46,4 +46,8 @@
     <string name="emailCheckHint">Prüfen Sie Ihre E-Mails</string>
     <string name="errorTitle">Fehler</string>
     <string name="emailTokenError">Sie haben einen falschen Code eingegeben. Bitte prüfen Sie den Bestätigungscode in Ihrer E-Mail.</string>
+
+    <string name="checkinMissingOrg">Die Organisation wurde nicht korrekt geladen. Bitte öffnen Sie die Organisationsansicht neu.</string>
+    <string name="checkinSuccessFallback">Check-in erfolgreich verarbeitet.</string>
+    <string name="checkinErrorFallback">Beim Check-in ist ein Fehler aufgetreten.</string>
 </resources>

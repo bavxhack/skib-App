@@ -23,6 +23,7 @@ class ScanCheckinActivity : AppCompatActivity() {
     private var handled = false
 
     private val timeoutRunnable = Runnable { finish() }
+    private var lastDialog: CheckinDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +60,12 @@ class ScanCheckinActivity : AppCompatActivity() {
     }
 
     private fun requestData(url: String) {
-        val orgId = getSharedPreferences(SaveSettings.SHARED_PREFS, MODE_PRIVATE).getInt(SaveSettings.ORG_ID, -1)
+        val orgId = intent.getIntExtra(EXTRA_ORG_ID, getSharedPreferences(SaveSettings.SHARED_PREFS, MODE_PRIVATE).getInt(SaveSettings.ORG_ID, -1))
+        if (orgId <= 0) {
+            Toast.makeText(this, R.string.checkinMissingOrg, Toast.LENGTH_LONG).show()
+            scheduleResume()
+            return
+        }
         val request = object : StringRequest(Method.POST, url,
             { response -> showResult(response) },
             { error ->
@@ -73,12 +79,20 @@ class ScanCheckinActivity : AppCompatActivity() {
 
     private fun showResult(response: String) {
         val json = JSONObject(response)
-        CheckinDialog.newInstance(
-            name = json.optString("name"),
-            kurs = json.optString("kurs"),
-            text = json.optString("errorText"),
+        val message = json.optString("errorText")
+            .ifBlank { json.optString("message") }
+            .ifBlank { if (json.optBoolean("error")) getString(R.string.checkinErrorFallback) else getString(R.string.checkinSuccessFallback) }
+        val name = json.optString("name").ifBlank { json.optString("child") }
+        val course = json.optString("kurs").ifBlank { json.optString("course") }
+
+        lastDialog?.dismissAllowingStateLoss()
+        lastDialog = CheckinDialog.newInstance(
+            name = name,
+            kurs = course,
+            text = message,
             isError = json.optBoolean("error"),
-        ).show(supportFragmentManager, "checkin")
+        )
+        lastDialog?.show(supportFragmentManager, "checkin")
 
         val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         val effect = VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE)
@@ -95,6 +109,7 @@ class ScanCheckinActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_TORCH = "extra_torch"
+        const val EXTRA_ORG_ID = "extra_org_id"
         private const val SCAN_TIMEOUT_MS = 120_000L
         private const val RESUME_DELAY_MS = 3_000L
     }
