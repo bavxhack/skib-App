@@ -49,7 +49,9 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/noSetting"
                     android:textSize="18sp"
-                    app:icon="@drawable/ic_baseline_check_24" />
+                    app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                 <LinearLayout
                     android:id="@+id/user_info"
@@ -149,7 +151,9 @@
                         android:text="@string/save"
                         android:textSize="16sp"
                         android:visibility="gone"
-                        app:icon="@drawable/ic_baseline_check_24" />
+                        app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/connectionResetOrg"
@@ -161,7 +165,9 @@
                         android:text="@string/delete"
                         android:textSize="16sp"
                         android:visibility="gone"
-                        app:icon="@drawable/ic_baseline_delete_24" />
+                        app:icon="@drawable/ic_baseline_delete_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,7 +186,9 @@
                         android:text="@string/save"
                         android:textSize="16sp"
                         android:visibility="gone"
-                        app:icon="@drawable/ic_baseline_check_24" />
+                        app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                     <LinearLayout
                         android:id="@+id/userEmailCOnfirmation"
@@ -219,7 +227,9 @@
                         android:text="@string/delete"
                         android:textSize="16sp"
                         android:visibility="gone"
-                        app:icon="@drawable/ic_baseline_delete_24" />
+                        app:icon="@drawable/ic_baseline_delete_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="12dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

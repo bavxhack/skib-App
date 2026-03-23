@@ -100,7 +100,9 @@
                             android:text="@string/button_ScanCode"
                             android:textAlignment="center"
                             android:textSize="18sp"
-                            app:icon="@drawable/ic_baseline_check_24" />
+                            app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                         <CheckBox
                             android:id="@+id/torchSwitch"
