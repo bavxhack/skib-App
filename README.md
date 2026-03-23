@@ -25,6 +25,17 @@ Bevor du die App auf deinem Handy startest, solltest du Folgendes installiert bz
 ### 1. Android Studio installieren
 Empfohlen ist eine aktuelle Android-Studio-Version mit eingebettetem **JDK 17**.
 
+
+> **Wichtig bei deinem Fehlerbild:**
+> Wenn Android Studio beim Sync meldet, dass die **Gradle JVM inkompatibel** ist, musst du in Android Studio die **Gradle JDK / Gradle JVM auf Java 17** umstellen.
+>
+> Pfad in Android Studio:
+> `File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JDK`
+>
+> Dort wählst du am besten:
+> - **Embedded JDK (17)**, oder
+> - ein lokal installiertes **JDK 17**
+
 ### 2. Android SDK installieren
 In Android Studio sollten mindestens diese Komponenten installiert sein:
 
@@ -169,21 +180,57 @@ Wenn etwas nicht funktioniert, prüfe in den App-Einstellungen auf dem Handy, ob
 ### Mögliche Ursache 1: SDK 35 fehlt
 Dann in Android Studio unter `Settings > Android SDK` die Plattform **API 35** nachinstallieren.
 
-### Mögliche Ursache 2: Gradle oder Abhängigkeiten werden nicht geladen
+### Mögliche Ursache 2: **Gradle JVM version incompatible**
+Wenn du beim Sync diese oder eine ähnliche Meldung siehst:
+
+```text
+Gradle JVM version incompatible.
+This project is configured to use an older Gradle JVM that supports up to version 8
+but the current AGP requires a Gradle JVM that supports version 17.
+```
+
+Dann ist fast immer in Android Studio noch **Java 8** oder ein anderes zu altes JDK für Gradle eingestellt.
+
+#### So behebst du das in Android Studio
+
+1. Öffne:
+   `File > Settings > Build, Execution, Deployment > Build Tools > Gradle`
+2. Suche die Einstellung **Gradle JDK**
+3. Stelle sie auf:
+   - **Embedded JDK (17)**, oder
+   - ein installiertes **JDK 17**
+4. Danach erneut:
+   - `File > Sync Project with Gradle Files`
+
+#### Falls du kein JDK 17 zur Auswahl hast
+
+Dann kannst du in Android Studio über den JDK-Dialog ein JDK 17 herunterladen oder lokal installieren und danach erneut auswählen.
+
+#### Falls du zusätzlich im Terminal baust
+
+Dann prüfe auch deine Java-Version:
+
+```bash
+java -version
+```
+
+Wenn dort nicht **17** angezeigt wird, setze für dein Terminal bzw. deine Shell ein JDK 17 als `JAVA_HOME`.
+
+### Mögliche Ursache 3: Gradle oder Abhängigkeiten werden nicht geladen
 Dann nacheinander versuchen:
 
 1. `File > Sync Project with Gradle Files`
 2. `Build > Clean Project`
 3. `Build > Rebuild Project`
 
-### Mögliche Ursache 3: Proxy / Firmennetzwerk blockiert Downloads
+### Mögliche Ursache 4: Proxy / Firmennetzwerk blockiert Downloads
 Wenn du in einem eingeschränkten Netzwerk bist, können Gradle oder Abhängigkeiten blockiert werden. In dem Fall:
 
 - anderes Netzwerk testen
 - Proxy in Android Studio korrekt eintragen
 - oder die Downloads außerhalb des Firmennetzes durchführen
 
-### Mögliche Ursache 4: Handy wird nicht erkannt
+### Mögliche Ursache 5: Handy wird nicht erkannt
 Im Android-Studio-Terminal oder normalen Terminal prüfen:
 
 ```bash
