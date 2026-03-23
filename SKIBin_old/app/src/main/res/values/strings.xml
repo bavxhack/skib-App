@@ -51,4 +51,14 @@
     <string name="checkinSuccessFallback">Check-in erfolgreich verarbeitet.</string>
     <string name="checkinErrorFallback">Beim Check-in ist ein Fehler aufgetreten.</string>
     <string name="checkinServerNotFound">Das gescannte Kind konnte nicht gefunden oder nicht verarbeitet werden.</string>
+    <string name="childListHeaderTitle">Kinderübersicht</string>
+    <string name="childListHeaderSubtitle">Check-ins und Anwesenheiten im Blick</string>
+    <string name="childListSegmentLabel">BETREUUNGSÜBERSICHT</string>
+    <string name="childListSegmentTitle">Kinderlisten für das Team</string>
+    <string name="childListSegmentDescription">Wechseln Sie zwischen spontanen Check-ins und den gemeldeten Anwesenheiten.</string>
+    <string name="childListFilterLabel">Schulfilter</string>
+    <string name="childListCheckinDescription">Kinder, die vor Ort eingecheckt werden können.</string>
+    <string name="childListAfterListDescription">Kinder, die bereits über die Liste als anwesend gemeldet sind.</string>
+    <string name="childListStatusCheckedIn">Eingecheckt</string>
+    <string name="childListStatusOpen">Bereit</string>
 </resources>
