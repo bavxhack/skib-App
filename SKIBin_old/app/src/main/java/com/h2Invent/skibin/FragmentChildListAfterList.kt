@@ -137,10 +137,17 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         }
 
         spinner.setItems(schools)
-        spinner.setOnItemSelectedListener { _, _, _, item: Schule ->
-            val filtered = if (item.id > 0) allChildren.filter { it.schoolId == item.id } else allChildren
-            bindChildren(filtered.ifEmpty { listOf(emptyPlaceholder()) })
-        }
+        spinner.setOnItemSelectedListener(object : MaterialSpinner.OnItemSelectedListener<Any> {
+            override fun onItemSelected(view: MaterialSpinner, position: Int, id: Long, item: Any) {
+                val selectedSchool = item as? Schule ?: return
+                val filtered = if (selectedSchool.id > 0) {
+                    allChildren.filter { it.schoolId == selectedSchool.id }
+                } else {
+                    allChildren
+                }
+                bindChildren(filtered.ifEmpty { listOf(emptyPlaceholder()) })
+            }
+        })
 
         bindChildren(allChildren)
     }
