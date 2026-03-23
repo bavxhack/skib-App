@@ -7,7 +7,6 @@
         <item name="colorSecondaryVariant">@color/colorSecondary</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/surfaceCard</item>
-        <item name="colorBackground">@color/surfaceBackground</item>
         <item name="android:colorBackground">@color/surfaceBackground</item>
         <item name="materialButtonStyle">@style/Widget.SKIBin.Button.Primary</item>
         <item name="materialCardViewStyle">@style/Widget.SKIBin.Card</item>
@@ -41,8 +40,6 @@
         <item name="cornerRadius">18dp</item>
         <item name="iconTint">@color/white</item>
         <item name="rippleColor">@color/buttonPrimaryPressed</item>
-        <item name="insetTop">0dp</item>
-        <item name="insetBottom">0dp</item>
     </style>
 
     <style name="Widget.SKIBin.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -53,8 +50,6 @@
         <item name="backgroundTint">@color/surfaceCard</item>
         <item name="cornerRadius">18dp</item>
         <item name="iconTint">@color/colorPrimary</item>
-        <item name="insetTop">0dp</item>
-        <item name="insetBottom">0dp</item>
     </style>
 
     <style name="Widget.SKIBin.Button.Danger" parent="Widget.SKIBin.Button.Primary">
