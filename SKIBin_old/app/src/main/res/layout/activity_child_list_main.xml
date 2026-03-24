@@ -32,36 +32,21 @@
         android:paddingEnd="@dimen/default_margin"
         android:paddingBottom="8dp">
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.SKIBin.Card"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabChildList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabChildList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/surfaceMuted"
-                    android:padding="4dp"
-                    app:tabBackground="@drawable/bg_child_list_tab"
-                    app:tabGravity="fill"
-                    app:tabIndicator="@android:color/transparent"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabMode="fixed"
-                    app:tabRippleColor="@color/surfaceMuted"
-                    app:tabSelectedTextColor="@color/colorPrimary"
-                    app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    app:tabTextColor="@color/grey" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:background="@color/surfaceCard"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/surfaceMuted"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            app:tabTextColor="@color/grey" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
