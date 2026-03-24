@@ -61,4 +61,6 @@
     <string name="childListAfterListDescription">Kinder, die bereits über die Liste als anwesend gemeldet sind.</string>
     <string name="childListStatusCheckedIn">Eingecheckt</string>
     <string name="childListStatusOpen">Bereit</string>
+    <string name="childListStatusSick">Krank</string>
+    <string name="childListSickUntilLabel">bis</string>
 </resources>

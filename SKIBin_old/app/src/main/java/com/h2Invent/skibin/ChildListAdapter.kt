@@ -31,12 +31,24 @@ class ChildListAdapter(
         holder.textViewSchool.text = item.school
         holder.textViewGrade.text = if (item.grade > 0) "${item.grade}. Klasse" else ""
         holder.hasBirthday.visibility = if (item.hasBirthday) View.VISIBLE else View.GONE
+        holder.sickInfo.text = item.formatSickInfo(holder.itemView.context.getString(R.string.childListSickUntilLabel))
+        holder.sickInfo.visibility = if (item.krank) View.VISIBLE else View.GONE
 
         when {
             item.schoolId == -1 -> {
                 holder.indicator.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, android.R.color.transparent))
                 holder.statusBadge.visibility = View.GONE
                 holder.card.strokeColor = ContextCompat.getColor(holder.itemView.context, R.color.strokeSubtle)
+                holder.checkinButton.visibility = View.GONE
+                holder.checkinButton.isEnabled = false
+            }
+            item.krank -> {
+                holder.indicator.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.buttonDanger))
+                holder.statusBadge.visibility = View.VISIBLE
+                holder.statusBadge.text = holder.itemView.context.getString(R.string.childListStatusSick)
+                holder.statusBadge.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.buttonDanger))
+                holder.statusBadge.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.surfaceMuted)
+                holder.card.strokeColor = ContextCompat.getColor(holder.itemView.context, R.color.backgroundError)
                 holder.checkinButton.visibility = View.GONE
                 holder.checkinButton.isEnabled = false
             }
@@ -70,6 +82,7 @@ class ChildListAdapter(
         val textViewName: TextView = itemView.findViewById(R.id.childElementName)
         val textViewSchool: TextView = itemView.findViewById(R.id.childElementSchule)
         val textViewGrade: TextView = itemView.findViewById(R.id.childElementKlasse)
+        val sickInfo: TextView = itemView.findViewById(R.id.childSickInfo)
         val indicator: LinearLayout = itemView.findViewById(R.id.indicatorCheckin)
         val statusBadge: TextView = itemView.findViewById(R.id.childStatusBadge)
         val hasBirthday: TextView = itemView.findViewById(R.id.birthdayShow)
@@ -86,4 +99,15 @@ class ChildListAdapter(
             }
         }
     }
+}
+
+private fun ChildListItem.formatSickInfo(untilLabel: String): String {
+    val range = when {
+        !krankVon.isNullOrBlank() && !krankBis.isNullOrBlank() -> "$krankVon - $krankBis"
+        !krankBis.isNullOrBlank() -> "$untilLabel $krankBis"
+        !krankVon.isNullOrBlank() -> krankVon
+        else -> null
+    }
+
+    return listOfNotNull(range, krankBemerkung?.takeIf { it.isNotBlank() }).joinToString(" • ")
 }

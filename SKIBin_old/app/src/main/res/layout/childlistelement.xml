@@ -62,6 +62,16 @@
                         android:layout_marginTop="2dp"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/childSickInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/buttonDanger"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <TextView
