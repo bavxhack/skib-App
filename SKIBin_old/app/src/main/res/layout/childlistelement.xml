@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.SKIBin.Card.Compact"
+    android:id="@+id/childCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,76 +17,106 @@
 
         <LinearLayout
             android:id="@+id/indicatorCheckin"
-            android:layout_width="20dp"
+            android:layout_width="12dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-        </LinearLayout>
+            android:background="@color/surfaceMuted" />
 
         <LinearLayout
-            android:layout_width="391dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_height="wrap_content"
+                android:gravity="top"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/childElementName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/childElementSchule"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/grey"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/childElementKlasse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/childSickInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/checkinButton"
-                            style="?attr/actionBarWidgetTheme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:enabled="true"
-                            android:text="@string/checkinButton"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/default_font_size" />
-
-                        <TextView
-                            android:id="@+id/birthdayShow"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_font_awesome_5_solid_crown"
-                            android:textColor="@color/backgroundError"
-                            android:visibility="gone"
-                            app:drawableTint="@color/backgroundError" />
-                    </LinearLayout>
-
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/buttonDanger"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/childStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_child_status_chip"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/childListStatusOpen"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/checkinButton"
+                    style="@style/Widget.SKIBin.Button.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@string/checkinButton"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/birthdayShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:drawableStart="@drawable/ic_font_awesome_5_solid_crown"
+                    android:text="@string/hasBirthday"
+                    android:textColor="@color/buttonDanger"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:drawableTint="@color/buttonDanger" />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

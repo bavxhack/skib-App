@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.h2Invent.skibin">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
-    <uses-feature android:name="android.hardware.camera.flash" />
-
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -17,18 +20,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <activity android:name="com.h2Invent.skibin.ChildListMainActivity"></activity>
-        <activity android:name="com.h2Invent.skibin.OrgMainActivity" />
-        <activity android:name="com.h2Invent.skibin.MainActivity" />
-        <activity android:name="com.h2Invent.skibin.ChildDetailActivity" />
-        <activity android:name="com.h2Invent.skibin.TabSettingsActivity" />
-        <activity android:name="com.h2Invent.skibin.SettingsActivity" />
-        <activity android:name="com.h2Invent.skibin.ScanSettings" />
-        <activity android:name="com.h2Invent.skibin.ScanSettingsUser" />
-        <activity android:name="com.h2Invent.skibin.scanActivity" />
+        android:theme="@style/AppTheme">
         <activity
-            android:name="com.h2Invent.skibin.FingerprintActivity"
+            android:name=".ChildDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChildListMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrgMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanCheckinActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScanSettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TabSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FingerprintActivity"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

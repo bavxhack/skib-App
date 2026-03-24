@@ -58,7 +58,9 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:text="@string/fingerprintAuthenticateButton"
-                app:icon="@drawable/ic_baseline_fingerprint_24" />
+                app:icon="@drawable/ic_baseline_fingerprint_24"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp" />
 
             <EditText
                 android:id="@+id/pinNumber"

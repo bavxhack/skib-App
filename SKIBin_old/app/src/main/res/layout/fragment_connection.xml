@@ -1,174 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_mitarbeiter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_mitarbeiter">
+    android:background="@color/surfaceBackground"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="@dimen/default_margin">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_org"
+            style="@style/Widget.SKIBin.Card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gerät verbinden"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Verbinde dieses Gerät mit Organisation oder Betreuung über den QR-Code aus der Webanwendung."
+                    android:textColor="@color/grey"
+                    android:textSize="15sp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/scanConnection"
+                    style="@style/Widget.SKIBin.Button.Primary"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/noSetting"
-                    android:textSize="@dimen/action_button" />
+                    android:textSize="18sp"
+                    app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                 <LinearLayout
                     android:id="@+id/user_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/surfaceMuted"
                     android:orientation="vertical"
+                    android:padding="16dp"
                     android:visibility="gone">
 
                     <TextView
                         android:id="@+id/user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:text=""
-                        android:textSize="@dimen/default_font_size" />
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/user_organisation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:text=""
-                        android:textSize="@dimen/default_font_size" />
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/grey"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/user_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:text=""
-                        android:textSize="@dimen/default_font_size" />
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/grey"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/orgInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/surfaceMuted"
                     android:orientation="vertical"
+                    android:padding="16dp"
                     android:visibility="gone">
 
                     <TextView
                         android:id="@+id/org_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/organisationName"
-                        android:textSize="@dimen/default_font_size" />
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/orgPartner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
+                        android:layout_marginTop="6dp"
                         android:text="@string/ansprechpartner"
-                        android:textSize="@dimen/default_font_size" />
+                        android:textColor="@color/grey"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/orgId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
                         android:text="Organisation ID"
-                        android:textSize="@dimen/default_font_size"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/orgUrl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
                         android:text="Organisation Url"
-                        android:textSize="@dimen/default_font_size"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
                         android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/settingConnectionOrg"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/default_margin"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/connectionOrgSave"
+                        style="@style/Widget.SKIBin.Button.Primary"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
+                        android:layout_height="52dp"
                         android:enabled="false"
                         android:text="@string/save"
-                        android:textSize="@dimen/action_button"
+                        android:textSize="16sp"
                         android:visibility="gone"
-                        android:backgroundTint="@color/backgroundSuccess"
-                        app:icon="@drawable/ic_baseline_check_24" />
+                        app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/connectionResetOrg"
+                        style="@style/Widget.SKIBin.Button.Danger"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="12dp"
                         android:enabled="false"
                         android:text="@string/delete"
-                        android:textSize="@dimen/default_font_size"
+                        android:textSize="16sp"
                         android:visibility="gone"
-                        android:backgroundTint="@color/backgroundError"
-                        app:icon="@drawable/ic_baseline_delete_24" />
-
+                        app:icon="@drawable/ic_baseline_delete_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/settingsConnectionUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
+                    android:layout_marginTop="16dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/saveUserConnection"
+                        style="@style/Widget.SKIBin.Button.Primary"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
+                        android:layout_height="52dp"
                         android:enabled="false"
                         android:text="@string/save"
-                        android:textSize="@dimen/action_button"
+                        android:textSize="16sp"
                         android:visibility="gone"
-                        android:backgroundTint="@color/backgroundSuccess"
-                        app:icon="@drawable/ic_baseline_check_24" />
+                        app:icon="@drawable/ic_baseline_check_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="12dp" />
 
                     <LinearLayout
                         android:id="@+id/userEmailCOnfirmation"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -176,42 +202,37 @@
                             android:id="@+id/edituseremailCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
                             android:ems="10"
                             android:hint="Email Confirmation Code"
                             android:inputType="textPersonName"
-                            android:visibility="visible" />
+                            android:padding="12dp" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/buttonEmailCOnfirmation"
+                            style="@style/Widget.SKIBin.Button.Secondary"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="52dp"
+                            android:layout_marginTop="12dp"
                             android:text="@string/OkText" />
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/resetUserConnection"
+                        style="@style/Widget.SKIBin.Button.Danger"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="12dp"
                         android:enabled="false"
                         android:text="@string/delete"
-                        android:textSize="@dimen/default_font_size"
+                        android:textSize="16sp"
                         android:visibility="gone"
-                        android:backgroundTint="@color/backgroundError"
-                        app:icon="@drawable/ic_baseline_delete_24" />
-
+                        app:icon="@drawable/ic_baseline_delete_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="12dp" />
                 </LinearLayout>
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp">
-
-        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-
 </ScrollView>
