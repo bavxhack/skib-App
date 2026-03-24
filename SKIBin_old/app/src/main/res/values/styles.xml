@@ -8,6 +8,10 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/surfaceCard</item>
         <item name="android:colorBackground">@color/surfaceBackground</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="windowLightStatusBar">false</item>
         <item name="materialButtonStyle">@style/Widget.SKIBin.Button.Primary</item>
         <item name="materialCardViewStyle">@style/Widget.SKIBin.Card</item>
         <item name="toolbarStyle">@style/Widget.SKIBin.Toolbar</item>
