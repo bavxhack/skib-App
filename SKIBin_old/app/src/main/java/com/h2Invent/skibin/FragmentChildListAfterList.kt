@@ -115,27 +115,12 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         allChildren.clear()
         visibleChildren.clear()
 
-        val number = response.optInt("number")
-        setChildCount(number)
-        if (number == 0) {
-            allChildren += emptyPlaceholder()
-            bindChildren(allChildren)
-            return
-        }
-
-        val result = response.optJSONArray("result")
-        for (index in 0 until (result?.length() ?: 0)) {
-            val child = result?.optJSONObject(index) ?: continue
-            allChildren += child.toChildListItem()
-        }
-
         val schools = mutableListOf(Schule(-1, "Alle Schulen"))
         val schoolJson = response.optJSONArray("schulen")
         for (index in 0 until (schoolJson?.length() ?: 0)) {
             val school = schoolJson?.optJSONObject(index) ?: continue
             schools += Schule(school.optInt("id"), school.optString("name"))
         }
-
         spinner.setItems(schools)
         spinner.setOnItemSelectedListener(object : MaterialSpinner.OnItemSelectedListener<Any> {
             override fun onItemSelected(view: MaterialSpinner, position: Int, id: Long, item: Any) {
@@ -149,7 +134,16 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
             }
         })
 
-        bindChildren(allChildren)
+        val result = response.optJSONArray("result")
+        for (index in 0 until (result?.length() ?: 0)) {
+            val child = result?.optJSONObject(index) ?: continue
+            allChildren += child.toChildListItem()
+        }
+
+        val number = if (response.has("number") && !response.isNull("number")) response.optInt("number") else allChildren.size
+        setChildCount(number)
+
+        bindChildren(allChildren.ifEmpty { listOf(emptyPlaceholder()) })
     }
 
     private fun bindChildren(items: List<ChildListItem>) {
