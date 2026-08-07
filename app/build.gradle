@@ -9,14 +9,10 @@ android {
 
     def ciRunNumber = System.getenv('GITHUB_RUN_NUMBER')
 
-    def ciRunNumber = System.getenv('GITHUB_RUN_NUMBER')
-
     defaultConfig {
         applicationId 'com.h2Invent.skibin'
         minSdk 23
-
-        targetSdk 37
-
+        targetSdk 36
         versionCode ciRunNumber ? 2 + ciRunNumber.toInteger() : 2
         versionName ciRunNumber ? "2.0.${ciRunNumber}" : '2.0'
 

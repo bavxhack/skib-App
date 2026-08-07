@@ -33,7 +33,6 @@ jobs:
       - name: Android SDK einrichten
         uses: android-actions/setup-android@v3
 
-
       - name: Android SDK 36 installieren
         run: sdkmanager "platforms;android-36"
 
