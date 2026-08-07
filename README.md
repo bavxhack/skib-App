@@ -22,7 +22,7 @@ GitHub Packages unterstützt keine generischen APK-Dateien als Pakettyp. Deshalb
 - **Programmiersprache:** Kotlin
 - **Build-System:** Gradle
 - **Minimale Android-Version:** Android 5.0 (API 21)
-- **Ziel-SDK:** Android 15 / API 35
+- **Ziel-SDK:** Android 16 / API 36
 - **Wichtige Bibliotheken:** Material Components, Volley, Fresco, Biometric, ZXing Embedded
 
 ---
