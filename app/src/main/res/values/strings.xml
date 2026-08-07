@@ -84,4 +84,27 @@
     <string name="detailCall">Anrufen</string>
     <string name="detailLoadError">Kinderdetails konnten nicht geladen werden. Bitte erneut versuchen.</string>
     <string name="detailGuardians">Erziehungsberechtigte</string>
+    <string name="loginWelcome">Willkommen zurück</string>
+    <string name="loginDescription">Melde dich sicher mit deinem Fingerabdruck oder deiner Geräte-PIN an.</string>
+    <string name="loginBiometric">Mit Fingerabdruck anmelden</string>
+    <string name="loginOrPin">ODER MIT PIN</string>
+    <string name="loginPin">PIN</string>
+    <string name="loginWithPin">Mit PIN anmelden</string>
+    <string name="loginSetPinTitle">Neue PIN festlegen</string>
+    <string name="loginSetPinDescription">Verwende vier bis acht Ziffern. Die PIN gilt nur auf diesem Gerät.</string>
+    <string name="loginNewPin">Neue PIN</string>
+    <string name="loginConfirmPin">Neue PIN bestätigen</string>
+    <string name="loginPinHelp">Die PIN muss aus vier bis acht Ziffern bestehen.</string>
+    <string name="loginSavePin">Neue PIN speichern</string>
+    <string name="loginResetPin">PIN neu setzen</string>
+    <string name="loginResetApp">App zurücksetzen</string>
+    <string name="loginSecurityNote">Deine Anmeldung wird nur auf diesem Gerät gespeichert.</string>
+    <string name="loginPinInvalid">Bitte gib eine PIN mit vier bis acht Ziffern ein.</string>
+    <string name="loginPinMismatch">Die PINs stimmen nicht überein.</string>
+    <string name="loginResetNeedsAuthentication">Bestätige zuerst deine Identität biometrisch.</string>
+    <string name="loginBiometricRunning">Biometrische Anmeldung läuft …</string>
+    <string name="loginBiometricUnavailable">Biometrie ist auf diesem Gerät nicht verfügbar. Melde dich mit deiner PIN an.</string>
+    <string name="loginPinPrimaryDescription">Melde dich sicher mit deiner Geräte-PIN an.</string>
+    <string name="loginResetExplanation">Die Geräteverbindung und die lokal gespeicherte Anmeldung werden entfernt. Danach musst du die App erneut mit SKiB verbinden.</string>
+    <string name="loginResetConfirm">Zurücksetzen</string>
 </resources>
