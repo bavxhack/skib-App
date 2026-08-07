@@ -10,7 +10,13 @@
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/surfaceCard"
         app:title="SKIBin" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_instagram_accent" />
 
     <LinearLayout
         android:layout_width="match_parent"

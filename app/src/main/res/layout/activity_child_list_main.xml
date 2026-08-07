@@ -10,17 +10,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/surfaceCard"
         android:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="@color/surfaceCard"
             app:title="@string/childListHeaderTitle"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_instagram_accent" />
 
     <LinearLayout
         android:id="@+id/childListContainer"
@@ -40,8 +45,8 @@
             android:background="@color/surfaceCard"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/colorPrimary"
-            app:tabIndicatorFullWidth="true"
-            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="4dp"
             app:tabMode="fixed"
             app:tabRippleColor="@color/surfaceMuted"
             app:tabSelectedTextColor="@color/colorPrimary"
