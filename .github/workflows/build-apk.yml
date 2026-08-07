@@ -1,21 +1,24 @@
-name: APK bauen und veroeffentlichen
+name: Production-APK veroeffentlichen
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: apk-release-${{ github.ref }}
+  group: production-release-main
   cancel-in-progress: false
 
 jobs:
   build-and-release:
-    name: APK bauen und als Release ablegen
+    name: Signierte Production-APK bauen und veroeffentlichen
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Repository auschecken
@@ -36,16 +39,45 @@ jobs:
       - name: Android SDK 36 installieren
         run: sdkmanager "platforms;android-36"
 
-      - name: APK bauen
-        run: ./gradlew --no-daemon assembleDebug
+      - name: Release-Signatur vorbereiten
+        shell: bash
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          missing=()
+          for variable in SIGNING_KEY KEY_STORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [[ -z "${!variable}" ]]; then
+              missing+=("${variable}")
+            fi
+          done
+          if (( ${#missing[@]} > 0 )); then
+            echo "Fehlende Production-Secrets: ${missing[*]}" >&2
+            exit 1
+          fi
 
-      - name: APK benennen
+          keystore="${RUNNER_TEMP}/release.keystore"
+          printf '%s' "${SIGNING_KEY}" | base64 --decode > "${keystore}"
+          echo "RELEASE_STORE_FILE=${keystore}" >> "${GITHUB_ENV}"
+          echo "RELEASE_STORE_PASSWORD=${KEY_STORE_PASSWORD}" >> "${GITHUB_ENV}"
+          echo "RELEASE_KEY_ALIAS=${KEY_ALIAS}" >> "${GITHUB_ENV}"
+          echo "RELEASE_KEY_PASSWORD=${KEY_PASSWORD}" >> "${GITHUB_ENV}"
+
+      - name: Production-APK bauen
+        run: ./gradlew --no-daemon clean assembleRelease
+
+      - name: APK pruefen und benennen
         id: package
         shell: bash
         run: |
           version="2.0.${GITHUB_RUN_NUMBER}"
+          source_apk="app/build/outputs/apk/release/app-release.apk"
           apk_name="skib-${version}.apk"
-          cp app/build/outputs/apk/debug/app-debug.apk "${RUNNER_TEMP}/${apk_name}"
+          test -f "${source_apk}"
+          apksigner verify --verbose "${source_apk}"
+          cp "${source_apk}" "${RUNNER_TEMP}/${apk_name}"
           echo "version=${version}" >> "${GITHUB_OUTPUT}"
           echo "apk_path=${RUNNER_TEMP}/${apk_name}" >> "${GITHUB_OUTPUT}"
 
@@ -56,7 +88,7 @@ jobs:
           path: ${{ steps.package.outputs.apk_path }}
           if-no-files-found: error
 
-      - name: GitHub Release mit APK erstellen
+      - name: GitHub Production-Release erstellen
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.package.outputs.version }}
@@ -65,4 +97,5 @@ jobs:
           gh release create "v${VERSION}" "${APK_PATH}" \
             --target "${GITHUB_SHA}" \
             --title "SKIB ${VERSION}" \
-            --notes "Automatisch aus Commit ${GITHUB_SHA} auf main erstellt."
+            --notes "Automatisch aus Commit ${GITHUB_SHA} auf main erstellt." \
+            --latest

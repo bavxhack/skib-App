@@ -308,3 +308,24 @@ Wenn du möchtest, kann ich dir als Nächstes auch noch eine zweite Datei ergän
 
 - eine **kurze Schnellstart-Anleitung für Nicht-Entwickler**, oder
 - eine **technische Entwickler-Doku** mit Projektstruktur, wichtigen Klassen und API-Fluss.
+
+# Production-Release
+
+Jeder Push auf `main` baut automatisch eine signierte Release-APK und legt sie
+als neuestes GitHub Release sowie als Workflow-Artefakt ab. Der Workflow nutzt
+das GitHub-Environment `production` und benoetigt dort (oder im Repository) die
+folgenden Actions-Secrets:
+
+- `SIGNING_KEY`: der komplette Keystore, Base64-kodiert
+- `KEY_STORE_PASSWORD`: Passwort des Keystores
+- `KEY_ALIAS`: Alias des Signaturschluessels
+- `KEY_PASSWORD`: Passwort des Signaturschluessels
+
+Den Wert fuer `SIGNING_KEY` kann man unter Linux beispielsweise so erzeugen:
+
+```bash
+base64 -w 0 release.keystore
+```
+
+Der Workflow bricht mit einer eindeutigen Meldung ab, wenn ein Secret fehlt,
+und prueft die erzeugte APK vor der Veroeffentlichung mit `apksigner`.
