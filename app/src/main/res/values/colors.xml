@@ -20,4 +20,6 @@
     <color name="surfacePrimary">#E7F1FF</color>
     <color name="statusAmber">#A05A00</color>
     <color name="statusPurple">#6C3DB0</color>
+    <color name="warningSoft">#FFF2DF</color>
+    <color name="sickSoft">#F3EAFF</color>
 </resources>

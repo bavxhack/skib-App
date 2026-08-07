@@ -64,6 +64,7 @@ class FragmentChildListCheckin : Fragment(), ChildListAdapter.OnItemClickListene
         startActivity(
             Intent(requireContext(), ChildDetailActivity::class.java)
                 .putExtra(ChildDetailActivity.EXTRA_URL, selectedChild.detailUrl)
+                .putExtra(ChildDetailActivity.EXTRA_CHECKIN_URL, selectedChild.checkinUrl)
                 .putExtra(ChildListMainActivity.EXTRA_USER_TOKEN, userToken),
         )
     }

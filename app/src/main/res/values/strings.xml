@@ -68,4 +68,20 @@
     <string name="todayAllSchools">Deine Schulen</string>
     <string name="todayMetric">%1$d von %2$d</string>
     <string name="todaySyncedNow">Gerade eben synchronisiert</string>
+    <string name="detailMissing">Nicht hinterlegt</string>
+    <string name="detailParents">Eltern anrufen</string>
+    <string name="detailEmergencyContact">Notfallkontakt</string>
+    <string name="detailInformation">Information</string>
+    <string name="detailConsents">Einwilligungen</string>
+    <string name="detailCheckinTitle">%1$s einchecken?</string>
+    <string name="detailCheckinMessage">Der Anwesenheitsstatus wird sofort an SKiB übertragen.</string>
+    <string name="detailCancel">Abbrechen</string>
+    <string name="detailCheckingIn">Wird eingecheckt …</string>
+    <string name="detailCheckinNow">Jetzt einchecken</string>
+    <string name="detailCheckedIn">✓ %1$s ist jetzt anwesend.</string>
+    <string name="detailPhoneMissing">Keine Telefonnummer hinterlegt.</string>
+    <string name="detailCallMessage">Jetzt %1$s anrufen?</string>
+    <string name="detailCall">Anrufen</string>
+    <string name="detailLoadError">Kinderdetails konnten nicht geladen werden. Bitte erneut versuchen.</string>
+    <string name="detailGuardians">Erziehungsberechtigte</string>
 </resources>
