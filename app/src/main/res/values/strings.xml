@@ -63,4 +63,9 @@
     <string name="childListStatusOpen">Bereit</string>
     <string name="childListStatusSick">Krank</string>
     <string name="childListSickUntilLabel">bis</string>
+    <string name="todayDefaultName">Team</string>
+    <string name="todayGreeting">Guten Morgen, %1$s</string>
+    <string name="todayAllSchools">Deine Schulen</string>
+    <string name="todayMetric">%1$d von %2$d</string>
+    <string name="todaySyncedNow">Gerade eben synchronisiert</string>
 </resources>
