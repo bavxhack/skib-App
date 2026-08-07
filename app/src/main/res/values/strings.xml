@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SKIBin</string>
     <string name="welcom_message">Willkommen zu SKIBin von unsere-schulkindbetreuung.de bitte verbinden Sie sie App mit Ihrer Organisatin über das Menü Einstellungen</string>
-    <string name="button_ScanCode">Checkin</string>
+    <string name="button_ScanCode">QR-Code scannen</string>
     <string name="button_optionen">Optionen</string>
     <string name="name_text">Name:</string>
     <string name="kurs_text">Kurs:</string>
@@ -15,7 +15,17 @@
     <string name="ansprechpartner">Ansprechpartner</string>
     <string name="telefon">Telefon</string>
     <string name="organisationName">Organisation</string>
-    <string name="anwesendeKinder">Heute da: </string>
+    <string name="anwesendeKinder">Heute da: –</string>
+    <string name="anwesendeKinderCount">Heute da: %1$d Kinder</string>
+    <string name="orgEyebrow">HEUTIGER CHECK-IN</string>
+    <string name="orgIntro">Kinder schnell und sicher über ihren persönlichen QR-Code einchecken.</string>
+    <string name="orgImageDescription">Bild der Organisation</string>
+    <string name="orgAttendanceLabel">ANWESENHEIT</string>
+    <string name="orgAttendanceHint">Die Anzahl wird nach jedem Check-in automatisch aktualisiert.</string>
+    <string name="orgScanHint">Öffnet die Kamera für den nächsten Kinder-QR-Code.</string>
+    <string name="orgTorchTitle">Lampe beim Scannen</string>
+    <string name="orgTorchDescription">Hilft bei schlechten Lichtverhältnissen.</string>
+    <string name="orgContactTitle">Kontakt vor Ort</string>
     <string name="torch">Lampe</string>
     <string name="torchOn">Beim Scannen des QR-Codes wird die LED-Lampe eingeschaltet</string>
     <string name="torchOff">Beim Scannen des QR-Codes ist die LED-Lampe ausgeschaltet</string>

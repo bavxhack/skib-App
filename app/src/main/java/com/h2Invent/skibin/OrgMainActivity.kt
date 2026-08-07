@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.CheckBox
+import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -26,7 +26,7 @@ class OrgMainActivity : AppCompatActivity() {
     private lateinit var ansprechpartner: TextView
     private lateinit var telefon: TextView
     private lateinit var scanButton: MaterialButton
-    private lateinit var torchSwitch: CheckBox
+    private lateinit var torchSwitch: CompoundButton
 
     private var orgId: Int = -1
     private var orgUrl: String = ""
@@ -100,7 +100,7 @@ class OrgMainActivity : AppCompatActivity() {
         if (orgUrl.isBlank()) return
         val request = JsonObjectRequest(Request.Method.GET, orgUrl, null,
             { response ->
-                amountKinder.text = getString(R.string.anwesendeKinder) + " ${response.optInt("anwesend")}" 
+                amountKinder.text = getString(R.string.anwesendeKinderCount, response.optInt("anwesend"))
                 ansprechpartner.text = response.optString("partner", ansprechpartner.text.toString())
                 telefon.text = response.optString("tel", telefon.text.toString())
                 val imageUrl = response.optString("image")
