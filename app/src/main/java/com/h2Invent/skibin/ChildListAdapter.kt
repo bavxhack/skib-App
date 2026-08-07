@@ -36,6 +36,9 @@ class ChildListAdapter(
         holder.hasBirthday.visibility = if (item.hasBirthday) View.VISIBLE else View.GONE
         holder.sickInfo.text = item.formatSickInfo(holder.itemView.context.getString(R.string.childListSickUntilLabel))
         holder.sickInfo.visibility = if (item.krank) View.VISIBLE else View.GONE
+        holder.card.isClickable = item.schoolId != -1
+        holder.card.isFocusable = item.schoolId != -1
+        holder.itemView.isEnabled = item.schoolId != -1
 
         when {
             item.schoolId == -1 -> {
@@ -100,7 +103,9 @@ class ChildListAdapter(
         init {
             itemView.setOnClickListener {
                 val position = bindingAdapterPosition
-                if (position != RecyclerView.NO_POSITION) listener.onItemClick(position)
+                if (position != RecyclerView.NO_POSITION && items[position].schoolId != -1) {
+                    listener.onItemClick(position)
+                }
             }
             checkinButton.setOnClickListener {
                 val position = bindingAdapterPosition

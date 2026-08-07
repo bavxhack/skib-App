@@ -61,6 +61,7 @@ class FragmentChildListCheckin : Fragment(), ChildListAdapter.OnItemClickListene
 
     override fun onItemClick(position: Int) {
         val selectedChild = visibleChildren.getOrNull(position) ?: return
+        if (selectedChild.schoolId == -1 || selectedChild.detailUrl.isBlank()) return
         startActivity(
             Intent(requireContext(), ChildDetailActivity::class.java)
                 .putExtra(ChildDetailActivity.EXTRA_URL, selectedChild.detailUrl)

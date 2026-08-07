@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -11,10 +11,15 @@
         <item name="android:statusBarColor">@color/surfaceCard</item>
         <item name="android:navigationBarColor">@color/surfaceCard</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="materialButtonStyle">@style/Widget.SKIBin.Button.Primary</item>
         <item name="materialCardViewStyle">@style/Widget.SKIBin.Card</item>
         <item name="toolbarStyle">@style/Widget.SKIBin.Toolbar</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="Widget.SKIBin.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="android:background">@color/surfaceCard</item>
