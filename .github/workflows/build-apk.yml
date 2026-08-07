@@ -1,0 +1,68 @@
+name: APK bauen und veroeffentlichen
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    name: APK bauen und als Release ablegen
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Android SDK einrichten
+        uses: android-actions/setup-android@v3
+
+      - name: Android SDK 37 installieren
+        run: sdkmanager "platforms;android-37"
+
+      - name: APK bauen
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: APK benennen
+        id: package
+        shell: bash
+        run: |
+          version="2.0.${GITHUB_RUN_NUMBER}"
+          apk_name="skib-${version}.apk"
+          cp app/build/outputs/apk/debug/app-debug.apk "${RUNNER_TEMP}/${apk_name}"
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          echo "apk_path=${RUNNER_TEMP}/${apk_name}" >> "${GITHUB_OUTPUT}"
+
+      - name: APK als Workflow-Artefakt speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: skib-${{ steps.package.outputs.version }}
+          path: ${{ steps.package.outputs.apk_path }}
+          if-no-files-found: error
+
+      - name: GitHub Release mit APK erstellen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.package.outputs.version }}
+          APK_PATH: ${{ steps.package.outputs.apk_path }}
+        run: |
+          gh release create "v${VERSION}" "${APK_PATH}" \
+            --target "${GITHUB_SHA}" \
+            --title "SKIB ${VERSION}" \
+            --notes "Automatisch aus Commit ${GITHUB_SHA} auf main erstellt."
