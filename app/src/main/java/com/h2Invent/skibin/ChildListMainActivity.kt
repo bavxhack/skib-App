@@ -30,7 +30,12 @@ class ChildListMainActivity : AppCompatActivity(),
         viewPager = findViewById(R.id.pager)
         childListAdapter = TabChildListAdapter(supportFragmentManager)
         viewPager.adapter = childListAdapter
-        findViewById<TabLayout>(R.id.tabChildList).setupWithViewPager(viewPager)
+        findViewById<TabLayout>(R.id.tabChildList).apply {
+            setupWithViewPager(viewPager)
+            getTabAt(0)?.setIcon(android.R.drawable.ic_menu_today)
+            getTabAt(1)?.setIcon(android.R.drawable.ic_menu_myplaces)
+            getTabAt(2)?.setIcon(android.R.drawable.checkbox_on_background)
+        }
     }
 
     override fun onResume() {
@@ -65,6 +70,11 @@ class ChildListMainActivity : AppCompatActivity(),
 
         childListAdapter.checkinFragment.setConfig(checkinUrl, userToken)
         childListAdapter.afterListFragment.setConfig(childListUrl, userToken)
+        childListAdapter.todayFragment.setConfig(checkinUrl, childListUrl, userToken)
+    }
+
+    fun showPage(position: Int) {
+        viewPager.currentItem = position
     }
 
     companion object {

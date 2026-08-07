@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/surfaceCard"
-            app:title="@string/childListHeaderTitle"
+            app:title="SKiB"
             app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -32,30 +32,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingStart="@dimen/default_margin"
-        android:paddingTop="8dp"
-        android:paddingEnd="@dimen/default_margin"
-        android:paddingBottom="8dp">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabChildList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/surfaceCard"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorPrimary"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="4dp"
-            app:tabMode="fixed"
-            app:tabRippleColor="@color/surfaceMuted"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
-            app:tabTextColor="@color/grey" />
+        android:paddingBottom="0dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabChildList"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/surfaceCard"
+            android:elevation="8dp"
+            app:tabGravity="fill"
+            app:tabIconTint="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/surfaceMuted"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:tabTextColor="@color/grey" />
     </LinearLayout>
 </LinearLayout>

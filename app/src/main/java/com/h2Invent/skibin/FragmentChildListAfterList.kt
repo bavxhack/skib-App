@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +19,8 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.jaredrummler.materialspinner.MaterialSpinner
+import com.google.android.material.chip.ChipGroup
+import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -29,11 +33,16 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
     private lateinit var titleView: TextView
     private lateinit var spinner: MaterialSpinner
     private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView: TextInputEditText
+    private lateinit var filterGroup: ChipGroup
 
     private var childListUrl: String = ""
     private var userToken: String = ""
     private val allChildren = mutableListOf<ChildListItem>()
     private val visibleChildren = mutableListOf<ChildListItem>()
+    private var selectedSchoolId = -1
+    private var statusFilter = StatusFilter.ALL
+    private val activeCheckins = mutableSetOf<String>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -50,7 +59,23 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         titleView = view.findViewById(R.id.url)
         spinner = view.findViewById(R.id.schulenChooseListe)
         recyclerView = view.findViewById(R.id.recyclerKinderListe)
+        searchView = view.findViewById(R.id.childSearch)
+        filterGroup = view.findViewById(R.id.childStatusFilters)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        searchView.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(value: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(value: CharSequence?, start: Int, before: Int, count: Int) = applyFilters()
+            override fun afterTextChanged(value: Editable?) = Unit
+        })
+        filterGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            statusFilter = when (checkedIds.firstOrNull()) {
+                R.id.filterWaiting -> StatusFilter.WAITING
+                R.id.filterPresent -> StatusFilter.PRESENT
+                R.id.filterSick -> StatusFilter.SICK
+                else -> StatusFilter.ALL
+            }
+            applyFilters()
+        }
         setChildCount(0)
         if (childListUrl.isNotBlank() && userToken.isNotBlank()) parseJson()
     }
@@ -63,9 +88,11 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
 
     override fun onItemClick(position: Int) {
         val selectedChild = visibleChildren.getOrNull(position) ?: return
+        if (selectedChild.schoolId == -1 || selectedChild.detailUrl.isBlank()) return
         startActivity(
             Intent(requireContext(), ChildDetailActivity::class.java)
                 .putExtra(ChildDetailActivity.EXTRA_URL, selectedChild.detailUrl)
+                .putExtra(ChildDetailActivity.EXTRA_CHECKIN_URL, selectedChild.checkinUrl)
                 .putExtra(ChildListMainActivity.EXTRA_USER_TOKEN, userToken),
         )
     }
@@ -86,13 +113,18 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
     }
 
     private fun executeCheckin(checkinUrl: String) {
+        if (!activeCheckins.add(checkinUrl)) return
         val uri = "$checkinUrl?communicationToken=$userToken"
         val request = JsonObjectRequest(Request.Method.GET, uri, null,
             { response ->
+                activeCheckins.remove(checkinUrl)
                 Toast.makeText(context, response.optString("errorText"), Toast.LENGTH_LONG).show()
                 (activity as? ChildListMainActivity)?.initApp()
             },
-            { error -> Toast.makeText(context, error.localizedMessage ?: "Request failed", Toast.LENGTH_LONG).show() },
+            { error ->
+                activeCheckins.remove(checkinUrl)
+                Toast.makeText(context, error.localizedMessage ?: "Request failed", Toast.LENGTH_LONG).show()
+            },
         )
         requestQueue.add(request)
     }
@@ -125,12 +157,8 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         spinner.setOnItemSelectedListener(object : MaterialSpinner.OnItemSelectedListener<Any> {
             override fun onItemSelected(view: MaterialSpinner, position: Int, id: Long, item: Any) {
                 val selectedSchool = item as? Schule ?: return
-                val filtered = if (selectedSchool.id > 0) {
-                    allChildren.filter { it.schoolId == selectedSchool.id }
-                } else {
-                    allChildren
-                }
-                bindChildren(filtered.ifEmpty { listOf(emptyPlaceholder()) })
+                selectedSchoolId = selectedSchool.id
+                applyFilters()
             }
         })
 
@@ -143,7 +171,32 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         val number = if (response.has("number") && !response.isNull("number")) response.optInt("number") else allChildren.size
         setChildCount(number)
 
-        bindChildren(allChildren.ifEmpty { listOf(emptyPlaceholder()) })
+        updateFilterCounts()
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        if (!::recyclerView.isInitialized) return
+        val query = if (::searchView.isInitialized) searchView.text?.toString().orEmpty().trim() else ""
+        val filtered = allChildren.filter { child ->
+            val matchesSchool = selectedSchoolId <= 0 || child.schoolId == selectedSchoolId
+            val matchesName = query.isBlank() || child.name.contains(query, ignoreCase = true)
+            val matchesStatus = when (statusFilter) {
+                StatusFilter.ALL -> true
+                StatusFilter.WAITING -> !child.checkedIn && !child.krank
+                StatusFilter.PRESENT -> child.checkedIn
+                StatusFilter.SICK -> child.krank
+            }
+            matchesSchool && matchesName && matchesStatus
+        }
+        bindChildren(filtered.ifEmpty { listOf(emptyPlaceholder()) })
+    }
+
+    private fun updateFilterCounts() {
+        view?.findViewById<com.google.android.material.chip.Chip>(R.id.filterAll)?.text = "Alle · ${allChildren.size}"
+        view?.findViewById<com.google.android.material.chip.Chip>(R.id.filterWaiting)?.text = "Nicht da · ${allChildren.count { !it.checkedIn && !it.krank }}"
+        view?.findViewById<com.google.android.material.chip.Chip>(R.id.filterPresent)?.text = "Anwesend · ${allChildren.count { it.checkedIn }}"
+        view?.findViewById<com.google.android.material.chip.Chip>(R.id.filterSick)?.text = "Krank · ${allChildren.count { it.krank }}"
     }
 
     private fun bindChildren(items: List<ChildListItem>) {
@@ -178,4 +231,6 @@ class FragmentChildListAfterList : Fragment(), ChildListAdapter.OnItemClickListe
         const val TITLE = "Anwesend nach Liste"
         fun newInstance() = FragmentChildListAfterList()
     }
+
+    private enum class StatusFilter { ALL, WAITING, PRESENT, SICK }
 }
