@@ -5,14 +5,16 @@ plugins {
 
 android {
     namespace 'com.h2Invent.skibin'
-    compileSdk 37
+    compileSdk 36
+
+    def ciRunNumber = System.getenv('GITHUB_RUN_NUMBER')
 
     defaultConfig {
         applicationId 'com.h2Invent.skibin'
         minSdk 23
-        targetSdk 37
-        versionCode 2
-        versionName '2.0'
+        targetSdk 36
+        versionCode ciRunNumber ? 2 + ciRunNumber.toInteger() : 2
+        versionName ciRunNumber ? "2.0.${ciRunNumber}" : '2.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables {
