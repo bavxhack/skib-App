@@ -4,6 +4,15 @@ Dieses Repository enthält die Android-App im Ordner `SKIBin_old/`.
 
 Die App ist für Organisationen und Betreuer gedacht und greift über die bestehende API auf verwaltete Kinder zu. Die Verbindung der App erfolgt über die QR-Codes aus der bestehenden Webanwendung.
 
+## Automatische APK-Builds
+
+Bei jedem Push auf den Branch `main` baut GitHub Actions automatisch eine installierbare Debug-APK. Der Workflow vergibt anhand der GitHub-Run-Nummer eine eindeutige Version im Format `2.0.<Run-Nummer>` und stellt die APK an zwei Stellen bereit:
+
+- als Artefakt des jeweiligen Workflow-Laufs unter **Actions**
+- dauerhaft als Datei eines automatisch erzeugten GitHub Releases unter **Releases**
+
+GitHub Packages unterstützt keine generischen APK-Dateien als Pakettyp. Deshalb wird die APK im dafür vorgesehenen Release-Bereich des Repositorys veröffentlicht.
+
 ---
 
 ## Projektüberblick
