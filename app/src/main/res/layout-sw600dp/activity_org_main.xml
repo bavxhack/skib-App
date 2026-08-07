@@ -10,20 +10,25 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/toolbar_elevation">
+        android:background="@color/surfaceCard"
+        android:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/surfaceCard"
             android:minHeight="56dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Organisation"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_instagram_accent" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -9,11 +9,16 @@
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/toolbar_elevation"
-        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
-        app:subtitleTextColor="@color/white"
-        app:titleTextColor="@color/white" />
+        android:background="@color/surfaceCard"
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:subtitleTextColor="@color/grey"
+        app:titleTextColor="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_instagram_accent" />
     <LinearLayout
         android:id="@+id/childListContainer"
         android:layout_width="match_parent"
